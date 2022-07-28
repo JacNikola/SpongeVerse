@@ -1,0 +1,11 @@
+Model Information:
+* title:	fortnite custom model
+* source:	https://sketchfab.com/3d-models/fortnite-custom-model-4298772bca764724af96da6fc289696d
+* author:	steuvyouz (https://sketchfab.com/steuvyouz1400)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "fortnite custom model" (https://sketchfab.com/3d-models/fortnite-custom-model-4298772bca764724af96da6fc289696d) by steuvyouz (https://sketchfab.com/steuvyouz1400) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
