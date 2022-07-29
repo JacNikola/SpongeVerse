@@ -5,7 +5,7 @@ const path = require('path')
 const { createServer } = require('http')
 const httpServer = createServer(app)
 const { Server } = require('socket.io')
-const io = new Server(httpServer, { transports: 'websocket' })
+const io = new Server(httpServer, { transports: ['websocket'] })
 
 app.use(express.static(__dirname + '/public'))
 
@@ -19,16 +19,16 @@ io.on('connection', (socket) => {
     // Obj containing all the data of the user eg. position, shape, color, etc.
     let userData = {
         id: socket.id,
-        position: '0 0 0',
+        position: { x: 0, y: 0, z: 0 },
     }
 
     // Place the users on the two ends of the room facing each other
     if (usersNumId.getNumId(socket.id) === 0) {
         console.log(`User ${usersNumId.getNumId(socket.id)} emitting`)
-        userData.position = '0 2 20'
+        userData.position = { x: 0, y: 2, z: 20 }
     } else {
         console.log(`User ${usersNumId.getNumId(socket.id)} emitting`)
-        userData.position = '0 2 -20'
+        userData.position = { x: 0, y: 2, z: -20 }
     }
 
     // Add the user data to metaData obj and emit it
@@ -42,17 +42,17 @@ io.on('connection', (socket) => {
     socket.emit('init', JSON.stringify(metaData, replacer), socket.id)
     socket.broadcast.emit('new user', JSON.stringify(userData))
 
+    socket.on('user movement update', (position) => {
+        metaData.usersData.set(socket.id, { id: socket.id, position: position })
+        const userData = metaData.getUserData(socket.id)
+        io.emit('user movement update', JSON.stringify(userData))
+    })
+
     // Remove the user data from metaData obj on disconnection
     socket.on('disconnecting', () => {
         console.log(`User ${usersNumId.getNumId(socket.id)} disconnected`)
         usersNumId.removeId(socket.id)
         metaData.removeUserData(socket.id)
-    })
-
-    socket.on('user movement update', (position) => {
-        metaData.usersData.set(socket.id, { id: socket.id, position: position })
-        const userData = metaData.getUserData(socket.id)
-        metaData.io.emit('user movement update', JSON.stringify(userData))
     })
 })
 
