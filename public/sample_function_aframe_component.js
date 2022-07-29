@@ -7,7 +7,6 @@ AFRAME.registerComponent('color-toggle', {
             socket.emit('color-toggle', 'blue')
             el.setAttribute('color', 'blue')
         }
-
         socket.on('color-toggle', (arg) => {
             el.setAttribute('color', arg)
         })
