@@ -1,7 +1,57 @@
 const express = require('express')
 const app = express()
 const path = require('path')
+const session = require('express-session')
+const dotenv = require('dotenv')
+const passport = require('passport')
+const GoogleStrategy = require('passport-google-oauth20').Strategy
 
+// Loading environment variables
+dotenv.config({path: 'config.env'});
+
+// Sessions
+app.use(
+    session({
+        secret: 'SpongeVerse',
+        resave: false,
+        saveUninitialized: false,
+    })
+);
+
+// Passport
+passport.use(new GoogleStrategy(
+    {
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: '/auth/google/callback'
+    },
+    async function (accessToken, refreshToken, profile, done) {
+        done(null, profile);
+    }
+))
+
+// To understand Passport serialize and deserialize,
+// Read this: https://stackoverflow.com/questions/27637609/understanding-passport-serialize-deserialize
+passport.serializeUser(function(user, cb) {
+    process.nextTick(function() {
+    cb(null, { id: user.id, username: user.username });
+    });
+});
+
+passport.deserializeUser(function(user, cb) {
+    process.nextTick(function() {
+        return cb(null, user);
+    });
+});
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+// Routes
+app.use('/', require("./routes/route"));
+
+
+// Creating Server
 const { createServer } = require('http')
 const httpServer = createServer(app)
 const { Server } = require('socket.io')
@@ -10,7 +60,7 @@ const io = new Server(httpServer, { transports: ['websocket'] })
 app.use(express.static(__dirname + '/public'))
 
 const room = 'metaverse'
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 
 io.on('connection', (socket) => {
     console.log(`User ${usersNumId.getNumId(socket.id)} connected`)
