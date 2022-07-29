@@ -10,10 +10,12 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy
 dotenv.config({path: 'config.env'});
 
 // Sessions
+// How session, saveUnitialized and resave work?
+// Read this: https://stackoverflow.com/questions/40381401/when-to-use-saveuninitialized-and-resave-in-express-session
 app.use(
     session({
         secret: 'SpongeVerse',
-        resave: false,
+        resave: true,
         saveUninitialized: false,
     })
 );

@@ -13,7 +13,10 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v4.2.0/dist/aframe-extras.min.js"></script>
+    
+    <!-- Components -->
     <script src="bundle.js"></script>
+    <script src="/components/logout.js"></script>
 </head>
 <body>
     <a-scene cursor="rayOrigin: mouse" physics="gravity: -9.8" inspector-plugin-recast="serviceURL: http://localhost:5000;">
@@ -71,6 +74,14 @@
 
         <!-- Floor -->
         <a-plane static-body position="0 0 0" rotation="-90 0 0" scale="50 50 0" material="color: #A3C3E7; shader: phong; reflectivity: 0.9; shininess: 30;" shadow="receive: true"></a-plane>
+
+        <!-- Logout Doors -->
+        <a-box static-body position="0 0 -25" rotation="0 0 0" scale="5 15 1" logout
+            material="color: blue; shader: phong; reflectivity: 0.9; shininess: 30;" shadow="receive: true">
+        </a-box>
+        <a-box static-body position="0 0 25" rotation="0 0 0" scale="5 15 1" logout
+            material="color: blue; shader: phong; reflectivity: 0.9; shininess: 30;" shadow="receive: true">
+        </a-box>
 
     </a-scene>
     <!-- Custom Script(s) -->
