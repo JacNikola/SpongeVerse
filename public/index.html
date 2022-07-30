@@ -8,11 +8,12 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r99/three.min.js"
-    integrity="sha512-0tlhMhMGPohLm/YwaskxH7jJuUGqU/XPTl+HE0dWrhGbpEBRIZYMQdbHC0CmyNPzZKTBd8JoVZnvMcL7hzlFOg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v4.2.0/dist/aframe-extras.min.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r99/three.min.js"
+        integrity="sha512-0tlhMhMGPohLm/YwaskxH7jJuUGqU/XPTl+HE0dWrhGbpEBRIZYMQdbHC0CmyNPzZKTBd8JoVZnvMcL7hzlFOg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     
     <!-- Components -->
     <script src="bundle.js"></script>
@@ -75,13 +76,43 @@
         <!-- Floor -->
         <a-plane static-body position="0 0 0" rotation="-90 0 0" scale="50 50 0" material="color: #A3C3E7; shader: phong; reflectivity: 0.9; shininess: 30;" shadow="receive: true"></a-plane>
 
-        <!-- Logout Doors -->
-        <a-box static-body position="0 0 -25" rotation="0 0 0" scale="5 15 1" logout
+
+        <!-- Exit Doors -->
+        <a-text value="EXIT" position="-0.8 10.5 -24.9" color="black" width="12"></a-text>
+        <a-box position="0 10.5 -25" rotation="0 0 0" width="5" height="1.5" depth="0.1" color="white"></a-box>
+        <a-box static-body position="0 5 -25" rotation="0 0 0" scale="5 10 0.25" logout
             material="color: blue; shader: phong; reflectivity: 0.9; shininess: 30;" shadow="receive: true">
         </a-box>
-        <a-box static-body position="0 0 25" rotation="0 0 0" scale="5 15 1" logout
+
+        <a-text value="EXIT" position="0.8 10.5 24.9" rotation="0 180 0" color="black" width="12"></a-text>
+        <a-box position="0 10.5 25" rotation="0 0 0" width="5" height="1.5" depth="0.1" color="white"></a-box>
+        <a-box static-body position="0 5 25" rotation="0 0 0" scale="5 10 0.25" logout
             material="color: blue; shader: phong; reflectivity: 0.9; shininess: 30;" shadow="receive: true">
         </a-box>
+
+
+        <!-- text banner -->
+        <a-text value="Welcome to SpongeVerse!" position="-3.1 7.5 0.1" color="black" width="12"></a-text>
+        <a-text value="Welcome to SpongeVerse!" rotation="0 180 0" position="3.1 7.5 -0.1" color="black" width="12"></a-text>
+        <a-box position="0 7.5 0" rotation="0 0 0" width="7" height="1.5" depth="0.1" color="khaki"></a-box>
+
+        <!-- banner pilars -->
+        <a-cylinder position=" 3.5 1 0" rotation="0 45 0" radius="0.3" height="15" depth="0.2" color="magenta"></a-cylinder>
+        <a-cylinder position="-3.5 1 0" rotation="0 45 0" radius="0.3" height="15" depth="0.2" color="magenta"></a-cylinder>
+       
+
+        <!-- Spiral -->
+        <a-torus color="hotpink" position="12 1 0" rotation="0 90 0" radius="2"></a-torus>
+        <a-torus color="orange" position="12 1 0" rotation="0 90 0" radius="4" radius-tubular="0.2"></a-torus>
+        <a-torus color="blue" position="12 1 0" rotation="0 90 0" radius="3" radius-tubular="0.2"></a-torus>
+        <a-torus color="red" position="12 1 0" rotation="0 90 0" radius="5" radius-tubular="0.2"></a-torus>
+
+        <a-torus color="hotpink" position="-12 1 0" rotation="0 90 0" radius="2"></a-torus>
+        <a-torus color="orange" position="-12 1 0" rotation="0 90 0" radius="4" radius-tubular="0.2"></a-torus>
+        <a-torus color="blue" position="-12 1 0" rotation="0 90 0" radius="3" radius-tubular="0.2"></a-torus>
+        <a-torus color="red" position="-12 1 0" rotation="0 90 0" radius="5" radius-tubular="0.2"></a-torus>
+
+
 
     </a-scene>
     <!-- Custom Script(s) -->
