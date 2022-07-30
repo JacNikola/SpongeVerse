@@ -7,7 +7,7 @@ const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 
 // Loading environment variables
-dotenv.config({path: 'config.env'});
+dotenv.config({ path: 'config.env' })
 
 // Sessions
 // How session, saveUnitialized and resave work?
@@ -18,40 +18,41 @@ app.use(
         resave: true,
         saveUninitialized: false,
     })
-);
+)
 
 // Passport
-passport.use(new GoogleStrategy(
-    {
-        clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: '/auth/google/callback'
-    },
-    async function (accessToken, refreshToken, profile, done) {
-        done(null, profile);
-    }
-))
+passport.use(
+    new GoogleStrategy(
+        {
+            clientID: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            callbackURL: '/auth/google/callback',
+        },
+        async function (accessToken, refreshToken, profile, done) {
+            done(null, profile)
+        }
+    )
+)
 
 // To understand Passport serialize and deserialize,
 // Read this: https://stackoverflow.com/questions/27637609/understanding-passport-serialize-deserialize
-passport.serializeUser(function(user, cb) {
-    process.nextTick(function() {
-    cb(null, { id: user.id, username: user.username });
-    });
-});
+passport.serializeUser(function (user, cb) {
+    process.nextTick(function () {
+        cb(null, { id: user.id, username: user.username })
+    })
+})
 
-passport.deserializeUser(function(user, cb) {
-    process.nextTick(function() {
-        return cb(null, user);
-    });
-});
+passport.deserializeUser(function (user, cb) {
+    process.nextTick(function () {
+        return cb(null, user)
+    })
+})
 
 app.use(passport.initialize())
 app.use(passport.session())
 
 // Routes
-app.use('/', require("./routes/route"));
-
+app.use('/', require('./routes/route'))
 
 // Creating Server
 const { createServer } = require('http')
@@ -65,7 +66,7 @@ const room = 'metaverse'
 const PORT = process.env.PORT || 5000
 
 io.on('connection', (socket) => {
-    console.log(`User ${usersNumId.getNumId(socket.id)} connected`)
+    console.log(`User ${socket.id} connected`)
     socket.join(room)
 
     // Obj containing all the data of the user eg. position, shape, color, etc.
@@ -74,18 +75,12 @@ io.on('connection', (socket) => {
         position: { x: 0, y: 0, z: 0 },
     }
 
-    // Place the users on the two ends of the room facing each other
-    if (usersNumId.getNumId(socket.id) === 0) {
-        console.log(`User ${usersNumId.getNumId(socket.id)} emitting`)
-        userData.position = { x: 0, y: 2, z: 20 }
-    } else {
-        console.log(`User ${usersNumId.getNumId(socket.id)} emitting`)
-        userData.position = { x: 0, y: 2, z: -20 }
-    }
+    // Assign position to the new user
+    userData.position = userPositionData.assignPosition(userData.id)
+    console.log(userData.position)
 
     // Add the user data to metaData obj and emit it
     metaData.addUserData(socket.id, userData)
-    console.log(metaData.usersData)
 
     // Why JSON?
     // Read this: https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript/5344074#5344074
@@ -97,14 +92,15 @@ io.on('connection', (socket) => {
     socket.on('user movement update', (position) => {
         metaData.usersData.set(socket.id, { id: socket.id, position: position })
         const userData = metaData.getUserData(socket.id)
-        io.emit('user movement update', JSON.stringify(userData))
+        socket.broadcast.emit('user movement update', JSON.stringify(userData))
     })
 
     // Remove the user data from metaData obj on disconnection
     socket.on('disconnecting', () => {
-        console.log(`User ${usersNumId.getNumId(socket.id)} disconnected`)
-        usersNumId.removeId(socket.id)
+        console.log(`User ${socket.id} disconnected`)
         metaData.removeUserData(socket.id)
+        userPositionData.removeUserPosition(socket.id)
+        socket.broadcast.emit('user disconnected', socket.id)
     })
 })
 
@@ -113,30 +109,59 @@ httpServer.listen(
     console.log(`Listening on port http://localhost:${PORT}`)
 )
 
-// @desc    object that contains mappings of socket.id to a numeric id
-//          might remove it later on after a generic function for spawning of users will be written
-const usersNumId = {
-    numId: new Map(),
-    list: [0, 0],
-    getNumId: function (socketId) {
-        if (this.numId.has(socketId) === false) {
-            this.numId.set(socketId, this.getFirstEmptyId())
+// @desc    assign positions to users randomly so that characters don't bump into each other
+const userPositionData = {
+    users: new Map(),
+    positions: new Set(),
+    assignPosition: function (socketId) {
+        let userPosition = { x: 0, y: 0, z: 0 }
+        for (let i = 0; i < 10; i++) {
+            userPosition = this.findPosition()
+            if (this.positions.has(userPosition)) continue
+            else break
         }
-        return this.numId.get(socketId)
+        this.positions.add(userPosition)
+        this.users.set(socketId, userPosition)
+        return userPosition
     },
-    removeId: function (socketId) {
-        this.list[this.getNumId(socketId)] = 0
-        this.numId.delete(socketId)
-    },
-    getFirstEmptyId: function () {
-        // Assuming there will be only two users at a time (for now)
-        if (this.list[0] === 0) {
-            this.list[0] = 1
-            return 0
-        } else {
-            this.list[1] = 1
-            return 1
+    findPosition: function () {
+        let region = Math.floor(Math.random() * 4)
+        switch (region) {
+            case 0:
+                // near back wall
+                return {
+                    x: Math.floor(Math.random() * (22 - -22) - 22),
+                    y: 2,
+                    z: Math.floor(Math.random() * (22 - 20) + 20),
+                }
+            case 1:
+                // near right wall
+                return {
+                    x: Math.floor(Math.random() * (22 - 20) + 20),
+                    y: 2,
+                    z: Math.floor(Math.random() * (22 - -22) - 22),
+                }
+            case 2:
+                // near front wall
+                return {
+                    x: Math.floor(Math.random() * (22 - -22) - 22),
+                    y: 2,
+                    z: Math.floor(Math.random() * (-20 - -22) - 22),
+                }
+            case 3:
+                // near left wall
+                return {
+                    x: Math.floor(Math.random() * (-20 - -22) - 22),
+                    y: 2,
+                    z: Math.floor(Math.random() * (22 - -22) - 22),
+                }
         }
+    },
+    removeUserPosition: function (socketId) {
+        this.positions.delete(this.users.get(socketId))
+        this.users.delete(socketId)
+        console.log(this.positions)
+        console.log(this.users)
     },
 }
 

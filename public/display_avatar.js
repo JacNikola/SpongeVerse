@@ -1,4 +1,4 @@
-const socket = io('ws://localhost:5000', { transports: ['websocket'] })
+const socket = io({ transports: ['websocket'] })
 let socketId
 
 socket.on('init', (metaDataJSON) => {
@@ -18,17 +18,19 @@ socket.on('init', (metaDataJSON) => {
             thisUserEl.getAttribute('position').y = data.position.y
             thisUserEl.getAttribute('position').z = data.position.z
 
-            // Rotate the camera to look at the center
-            // Based on: https://stackoverflow.com/questions/62806316/how-to-look-to-objects-using-lookat-with-a-frame-camera-component-and-look-con
-            // ***Error in Movement of Second User***
-            thisUserEl.sceneEl.camera.lookAt(new THREE.Vector3(0, 0, 0))
+            // Center the camera to look at the center
+            // *** Will implement later ***
         } else {
             const otherUserEl = document.createElement('a-entity')
             otherUserEl.setAttribute('id', id)
+            otherUserEl.setAttribute('animation', {
+                dir: 'alternate',
+                easing: 'easeInQuad',
+                loop: true,
+            })
             otherUserEl.getAttribute('position').x = data.position.x
             otherUserEl.getAttribute('position').y = data.position.y
             otherUserEl.getAttribute('position').z = data.position.z
-            console.log(otherUserEl.getAttribute('position'), data.position)
             otherUserEl.innerHTML = `
                 <a-cylinder position="0 1 0" color="green" height="0.75" radius="0.75" shadow="receive: true; cast: true;"></a-cylinder>
                 <a-cylinder position="0 1.875 0" color="blue" height="1" radius="0.75" shadow="receive: true; cast: true;"></a-cylinder>
@@ -43,6 +45,11 @@ socket.on('new user', (userDataJSON) => {
     const userData = JSON.parse(userDataJSON)
     const otherUserEl = document.createElement('a-entity')
     otherUserEl.setAttribute('id', userData.id)
+    otherUserEl.setAttribute('animation', {
+        dir: 'alternate',
+        easing: 'easeInQuad',
+        loop: true,
+    })
     otherUserEl.getAttribute('position').x = userData.position.x
     otherUserEl.getAttribute('position').y = userData.position.y
     otherUserEl.getAttribute('position').z = userData.position.z
@@ -54,21 +61,39 @@ socket.on('new user', (userDataJSON) => {
     document.querySelector('a-scene').appendChild(otherUserEl)
 })
 
+socket.on('user disconnected', (disconnectedUser) => {
+    document.getElementById(disconnectedUser).remove()
+})
+
 document.addEventListener('keydown', () => {
-    console.log(socketId, document.getElementById(socketId))
-    socket.emit(
-        'user movement update',
-        document.getElementById(socketId).getAttribute('position')
-    )
+    let userGlobalPosition = document
+        .getElementById(socketId)
+        .getAttribute('position')
+
+    let cameraRelativePosition = document
+        .getElementById('camera')
+        .getAttribute('position')
+
+    let updatedPosition = {
+        x: userGlobalPosition.x + cameraRelativePosition.x,
+        y: userGlobalPosition.y,
+        z: userGlobalPosition.z + cameraRelativePosition.z,
+    }
+
+    socket.emit('user movement update', updatedPosition)
 })
 
 socket.on('user movement update', (userDataJSON) => {
     const userData = JSON.parse(userDataJSON)
-    const otherUserEl = document.getElementById(userData.id)
-    console.log('hit', userData.id, otherUserEl)
-    otherUserEl.getAttribute('position').x = userData.position.x
-    otherUserEl.getAttribute('position').y = userData.position.y
-    otherUserEl.getAttribute('position').z = userData.position.z
+    const userEl = document.getElementById(userData.id)
+    userEl.getAttribute('animation').from = userEl.getAttribute('position')
+    console.log('Before', userEl.getAttribute('position'))
+    userEl.getAttribute('position').x = userData.position.x
+    userEl.getAttribute('position').y = userData.position.y
+    userEl.getAttribute('position').z = userData.position.z
+    userEl.getAttribute('animation').to = userEl.getAttribute('position')
+    console.log('After', userEl.getAttribute('position'))
+    console.log(userEl.getAttribute('animation'))
 })
 
 // @desc    required for serializing maps in JSON parse

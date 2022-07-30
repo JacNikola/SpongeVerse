@@ -10,10 +10,7 @@
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v4.2.0/dist/aframe-extras.min.js"></script>
-
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r99/three.min.js"
-        integrity="sha512-0tlhMhMGPohLm/YwaskxH7jJuUGqU/XPTl+HE0dWrhGbpEBRIZYMQdbHC0CmyNPzZKTBd8JoVZnvMcL7hzlFOg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r99/three.min.js"></script> -->
     
     <!-- Components -->
     <script src="bundle.js"></script>
@@ -35,27 +32,27 @@
         <a-sky color="#FFFFFF"></a-sky>
 
         <!-- Ceiling -->
-        <a-plane src="assets/pattern.jpeg" position="0 20 0" rotation="90 0 0" scale="50 50 0" material="color: #E7C7A3; shader: phong; reflectivity: 0.9; shininess: 30;"></a-plane>
+        <a-plane src="assets/pattern.jpeg" position="0 20 0" rotation="90 0 0" scale="50 50 0" material="color: #E7C7A3; shader: phong; reflectivity: 0.9; shininess: 30; repeat: 10 5;"></a-plane>
 
         <!-- Right Wall -->
-        <a-plane src="assets/walls.jpeg" position="25 10 0" rotation="0 -90 0" scale="50 20 0" material="color: #E5E7A3; shader: phong; reflectivity: 0.9; shininess: 30;" shadow="receive: true"></a-plane>
+        <a-plane src="assets/walls.jpeg" position="25 10 0" rotation="0 -90 0" scale="50 20 0" material="color: #E5E7A3; shader: phong; reflectivity: 0.9; shininess: 30; repeat: 2 2" shadow="receive: true"></a-plane>
 
         <!-- Left Wall -->
-        <a-plane src="assets/walls.jpeg" position="-25 10 0" rotation="0 90 0" scale="50 20 0" material="color: #E5E7A3; shader: phong; reflectivity: 0.9; shininess: 30;" shadow="receive: true"></a-plane>
+        <a-plane src="assets/walls.jpeg" position="-25 10 0" rotation="0 90 0" scale="50 20 0" material="color: #E5E7A3; shader: phong; reflectivity: 0.9; shininess: 30; repeat: 2 2" shadow="receive: true"></a-plane>
 
         <!-- Front Wall -->
-        <a-plane src="assets/walls.jpeg" position="0 10 -25" rotation="0 0 0" scale="50 20 0" material="color: #E7A5A3; shader: phong; reflectivity: 0.9; shininess: 30;" shadow="receive: true"></a-plane>
+        <a-plane src="assets/walls.jpeg" position="0 10 -25" rotation="0 0 0" scale="50 20 0" material="color: #E7A5A3; shader: phong; reflectivity: 0.9; shininess: 30; repeat: 2 2" shadow="receive: true"></a-plane>
 
         <!-- Back Wall -->
-        <a-plane src="assets/walls.jpeg" position="0 10 25" rotation="0 180 0" scale="50 20 0" material="color: #E7A5A3; shader: phong; reflectivity: 0.9; shininess: 30;" shadow="receive: true"></a-plane>
+        <a-plane src="assets/walls.jpeg" position="0 10 25" rotation="0 180 0" scale="50 20 0" material="color: #E7A5A3; shader: phong; reflectivity: 0.9; shininess: 30; repeat: 2 2" shadow="receive: true"></a-plane>
         
         <!-- Floor -->
-        <a-plane src="assets/grass.jpeg" static-body position="0 0 0" rotation="-90 0 0" scale="50 50 0" material="color: #A3C3E7; shader: phong; reflectivity: 0.9; shininess: 30;" shadow="receive: true"></a-plane>
+        <a-plane src="assets/grass.jpeg" static-body position="0 0 0" rotation="-90 0 0" scale="50 50 0" material="color: #A3C3E7; shader: phong; reflectivity: 0.9; shininess: 30; repeat: 20 10;" shadow="receive: true"></a-plane>
 
 
         <!-- Camera + User -->
-        <a-entity id="user" look-controls="reverseMouseDrag:true" wasd-controls>
-            <a-entity id="camera" camera position="0 3.5 0">
+        <a-entity id="user"w>
+            <a-entity id="camera" camera wasd-controls look-controls="reverseMouseDrag:true" position="0 3.5 0">
             <a-cylinder position="0 1 0" color="green" height="0.75" radius="0.75" shadow="receive: true; cast: true;"></a-cylinder>
             <a-cylinder position="0 1.875 0" color="blue" height="1" radius="0.75" shadow="receive: true; cast: true;"></a-cylinder>
             <a-sphere position="0 3 0" color="red" radius="0.5" shadow="receive: true; cast: true;"></a-sphere>
@@ -67,14 +64,14 @@
         <a-cylinder dynamic-body position="-8 3 0" height="1" radius="0.5"
             material="color: #5AAC84; shader: phong; reflectivity: 0.9; shininess: 30;" shadow="receive: true; cast: true;"></a-cylinder>
         <a-box src="assets/tiles.jpeg" static-body position="-8 0 0" scale="8 1 8" 
-            material="color: #D4A3BA; shader: phong; reflectivity: 0.9; shininess: 30;" shadow="receive: true; cast: true;"></a-box>
+            material="color: #D4A3BA; shader: phong; reflectivity: 0.9; shininess: 30; repeat: 2 2;" shadow="receive: true; cast: true;"></a-box>
 
         <!-- Non-Wearable items -->
         <a-sphere dynamic-body position="8 3 0" radius="0.5"
             material="color: #FED000; shader: phong; reflectivity: 0.9; shininess: 30;" shadow="receive: true; cast: true;">
         </a-sphere>
         <a-box src="assets/tiles.jpeg" static-body position="8 0 0" scale="8 1 8"
-            material="color: #D4A3BA; shader: phong; reflectivity: 0.9; shininess: 30;" shadow="receive: true; cast: true;">
+            material="color: #D4A3BA; shader: phong; reflectivity: 0.9; shininess: 30; repeat: 2 2;" shadow="receive: true; cast: true;">
         </a-box>
 
 
@@ -93,15 +90,15 @@
 
 
         <!-- Spiral -->
-        <a-torus color="hotpink" position="12 1 0" rotation="0 90 0" radius="2"></a-torus>
-        <a-torus color="orange" position="12 1 0" rotation="0 90 0" radius="4" radius-tubular="0.2"></a-torus>
-        <a-torus color="blue" position="12 1 0" rotation="0 90 0" radius="3" radius-tubular="0.2"></a-torus>
-        <a-torus color="red" position="12 1 0" rotation="0 90 0" radius="5" radius-tubular="0.2"></a-torus>
+        <a-torus color="hotpink" position="13 0 0" rotation="0 90 0" radius="2"></a-torus>
+        <a-torus color="orange" position="13 0 0" rotation="0 90 0" radius="4" radius-tubular="0.2"></a-torus>
+        <a-torus color="blue" position="13 0 0" rotation="0 90 0" radius="3" radius-tubular="0.2"></a-torus>
+        <a-torus color="red" position="13 0 0" rotation="0 90 0" radius="5" radius-tubular="0.2"></a-torus>
 
-        <a-torus color="hotpink" position="-12 1 0" rotation="0 90 0" radius="2"></a-torus>
-        <a-torus color="orange" position="-12 1 0" rotation="0 90 0" radius="4" radius-tubular="0.2"></a-torus>
-        <a-torus color="blue" position="-12 1 0" rotation="0 90 0" radius="3" radius-tubular="0.2"></a-torus>
-        <a-torus color="red" position="-12 1 0" rotation="0 90 0" radius="5" radius-tubular="0.2"></a-torus>
+        <a-torus color="hotpink" position="-13 0 0" rotation="0 90 0" radius="2"></a-torus>
+        <a-torus color="orange" position="-13 0 0" rotation="0 90 0" radius="4" radius-tubular="0.2"></a-torus>
+        <a-torus color="blue" position="-13 0 0" rotation="0 90 0" radius="3" radius-tubular="0.2"></a-torus>
+        <a-torus color="red" position="-13 0 0" rotation="0 90 0" radius="5" radius-tubular="0.2"></a-torus>
 
 
         <!-- text banner -->
