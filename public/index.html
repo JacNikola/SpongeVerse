@@ -28,7 +28,7 @@
       <a-assets>
         <a-asset-item
           id="model"
-          src="assets/rigged_human_character_free/scene.gltf"
+          src="assets/Walking.fbx"
         ></a-asset-item>
       </a-assets>
 
@@ -41,7 +41,9 @@
         position="0 100 0"
       ></a-entity>
 
-      
+      <!-- Background Music -->
+      <a-entity sound="src: url(assets/music.mp3); autoplay: true;"></a-entity>
+
       <!-- Camera + User -->
       <a-entity id="user">
         <a-entity id="camera" camera wasd-controls look-controls="reverseMouseDrag:true" position="0 3.5 0">
