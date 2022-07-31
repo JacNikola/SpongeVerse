@@ -54,9 +54,9 @@ socket.on('new user', (userDataJSON) => {
     otherUserEl.getAttribute('position').y = userData.position.y
     otherUserEl.getAttribute('position').z = userData.position.z
     otherUserEl.innerHTML = `
-                <a-cylinder position="0 1 0" color="green" height="0.75" radius="0.75" shadow="receive: true; cast: true;"></a-cylinder>
-                <a-cylinder position="0 1.875 0" color="blue" height="1" radius="0.75" shadow="receive: true; cast: true;"></a-cylinder>
                 <a-sphere position="0 3 0" color="red" radius="0.5" shadow="receive: true; cast: true;"></a-sphere>
+                <a-cylinder position="0 1.875 0" color="blue" height="1" radius="0.75" shadow="receive: true; cast: true;"></a-cylinder>
+                <a-cylinder position="0 1 0" color="green" height="0.75" radius="0.75" shadow="receive: true; cast: true;"></a-cylinder>
             `
     document.querySelector('a-scene').appendChild(otherUserEl)
 })
@@ -81,6 +81,25 @@ document.addEventListener('keydown', () => {
     }
 
     socket.emit('user movement update', updatedPosition)
+})
+
+document.addEventListener('onclick', () => {
+    console.log('Hitt')
+    // let userGlobalRotation = document
+    //     .getElementById(socketId)
+    //     .getAttribute('rotation')
+
+    // let cameraRelativeRotation = document
+    //     .getElementById('camera')
+    //     .getAttribute('rotation')
+
+    // let updatedPosition = {
+    //     x: userGlobalPosition.x + cameraRelativePosition.x,
+    //     y: userGlobalPosition.y,
+    //     z: userGlobalPosition.z + cameraRelativePosition.z,
+    // }
+
+    // socket.emit('user movement update', updatedPosition)
 })
 
 socket.on('user movement update', (userDataJSON) => {
