@@ -73,6 +73,7 @@ io.on("connection", (socket) => {
   let userData = {
     id: socket.id,
     position: { x: 0, y: 0, z: 0 },
+    rotation: { x: 0, y: 0, z: 0 },
   };
 
   // Assign position to the new user
@@ -89,10 +90,25 @@ io.on("connection", (socket) => {
   socket.emit("init", JSON.stringify(metaData, replacer), socket.id);
   socket.broadcast.emit("new user", JSON.stringify(userData));
 
+  // Update position of characters in the scene
   socket.on("user movement update", (position) => {
     metaData.usersData.set(socket.id, { id: socket.id, position: position });
     const userData = metaData.getUserData(socket.id);
     socket.broadcast.emit("user movement update", JSON.stringify(userData));
+  });
+
+  // Update position of characters in the scene
+  socket.on("user movement update", (position) => {
+    metaData.usersData.get(socket.id).position = position;
+    const userData = metaData.getUserData(socket.id);
+    socket.broadcast.emit("user movement update", JSON.stringify(userData));
+  });
+
+  // Update rotation of characters in the scene
+  socket.on("user rotation update", (rotation) => {
+    metaData.usersData.get(socket.id).rotation = rotation;
+    const userData = metaData.getUserData(socket.id);
+    socket.broadcast.emit("user rotation update", JSON.stringify(userData));
   });
 
   // Remove the user data from metaData obj on disconnection
