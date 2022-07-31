@@ -60,6 +60,7 @@ const httpServer = createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(httpServer, { transports: ["websocket"] });
 
+// Make public directory visible
 app.use(express.static(__dirname + "/public"));
 
 const room = "metaverse";
@@ -89,13 +90,6 @@ io.on("connection", (socket) => {
   // Read this: https://stackoverflow.com/a/56150320/11342472
   socket.emit("init", JSON.stringify(metaData, replacer), socket.id);
   socket.broadcast.emit("new user", JSON.stringify(userData));
-
-  // Update position of characters in the scene
-  socket.on("user movement update", (position) => {
-    metaData.usersData.set(socket.id, { id: socket.id, position: position });
-    const userData = metaData.getUserData(socket.id);
-    socket.broadcast.emit("user movement update", JSON.stringify(userData));
-  });
 
   // Update position of characters in the scene
   socket.on("user movement update", (position) => {
