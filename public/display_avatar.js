@@ -82,14 +82,27 @@ document.addEventListener("keydown", () => {
 socket.on("user movement update", (userDataJSON) => {
   const userData = JSON.parse(userDataJSON);
   const userEl = document.getElementById(userData.id);
-  userEl.getAttribute("animation").from = userEl.getAttribute("position");
-  console.log("Before", userEl.getAttribute("position"));
   userEl.getAttribute("position").x = userData.position.x;
   userEl.getAttribute("position").y = userData.position.y;
   userEl.getAttribute("position").z = userData.position.z;
-  userEl.getAttribute("animation").to = userEl.getAttribute("position");
-  console.log("After", userEl.getAttribute("position"));
-  console.log(userEl.getAttribute("animation"));
+});
+
+document.addEventListener("mousemove", () => {
+  let cameraRelativeRotation = document
+    .getElementById("camera")
+    .getAttribute("rotation");
+
+  console.log(cameraRelativeRotation)
+  socket.emit("user rotation update", cameraRelativeRotation);
+})
+
+socket.on("user rotation update", (userDataJSON) => {
+  const userData = JSON.parse(userDataJSON);
+  const userEl = document.getElementById(userData.id).querySelector('a-entity');
+  userEl.getAttribute("rotation").x = userData.rotation.x;
+  userEl.getAttribute("rotation").y = userData.rotation.y;
+  userEl.getAttribute("rotation").z = userData.rotation.z;
+  console.log(userEl.getAttribute("rotation"))
 });
 
 // @desc    required for serializing maps in JSON parse

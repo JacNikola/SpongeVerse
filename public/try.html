@@ -23,7 +23,7 @@
 
       <!-- Directional Light -->
       <a-entity
-        light="type: directional; color: #FFFFFF; intensity: 0.1; castShadow: true"
+        light="type: directional; color: #FFFFFF; intensity: 0.7; castShadow: true"
         position="0 100 0"
       ></a-entity>
 
@@ -34,9 +34,24 @@
       ></a-gltf-model>
       <a-gltf-model
         id="user"
-        position="0 -3 -6"
-        scale="3 3 3"
-        src="assets/rigged_human_character_free/scene.gltf"
+        position="0 0 -7"
+        scale="4 4 4"
+        src="assets/built_male_young_anatomy_free_download/scene.gltf"
+        animation="property: rotation; to: 0 360 0; dur: 2000; loop: true; easing: linear"
+      ></a-gltf-model>
+      <a-gltf-model
+        id="pants"
+        position="0 -7 -7"
+        scale="5 10 9"
+        src="assets/survival_pants_scifi/scene.gltf"
+        animation="property: rotation; to: 0 360 0; dur: 2000; loop: true; easing: linear"
+      ></a-gltf-model>
+      <a-gltf-model
+        id="pants"
+        position="0 -7 -7"
+        scale="5 10 9"
+        src="assets/male_jeans/scene.gltf"
+        animation="property: rotation; to: 0 360 0; dur: 2000; loop: true; easing: linear"
       ></a-gltf-model>
 
       <!-- Camera + User -->
@@ -44,6 +59,7 @@
         <a-entity
           id="camera"
           camera
+          wasd-controls
           look-controls="reverseMouseDrag:true"
           position="0 1 0"
         >
