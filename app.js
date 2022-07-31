@@ -60,6 +60,7 @@ const httpServer = createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(httpServer, { transports: ["websocket"] });
 
+// Make public directory visible
 app.use(express.static(__dirname + "/public"));
 
 const room = "metaverse";

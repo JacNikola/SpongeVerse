@@ -23,14 +23,14 @@ socket.on("init", (metaDataJSON) => {
     } else {
       const otherUserEl = document.createElement("a-entity");
       otherUserEl.setAttribute("id", id);
-      otherUserEl.setAttribute("animation", {
-        dir: "alternate",
-        easing: "easeInQuad",
-        loop: true,
-      });
       otherUserEl.getAttribute("position").x = data.position.x;
       otherUserEl.getAttribute("position").y = data.position.y;
       otherUserEl.getAttribute("position").z = data.position.z;
+      otherUserEl.object3D.rotation.set( 
+        THREE.Math.degToRad(0),
+        THREE.Math.degToRad(180),
+        THREE.Math.degToRad(0),    
+      );
       otherUserEl.innerHTML = `
           <a-entity position="0 -1 0" gltf-model="#model" scale="3 3 3"></a-entity>
             `;
@@ -39,23 +39,25 @@ socket.on("init", (metaDataJSON) => {
   });
 });
 
+
 socket.on("new user", (userDataJSON) => {
   const userData = JSON.parse(userDataJSON);
   const otherUserEl = document.createElement("a-entity");
   otherUserEl.setAttribute("id", userData.id);
-  otherUserEl.setAttribute("animation", {
-    dir: "alternate",
-    easing: "easeInQuad",
-    loop: true,
-  });
   otherUserEl.getAttribute("position").x = userData.position.x;
   otherUserEl.getAttribute("position").y = userData.position.y;
   otherUserEl.getAttribute("position").z = userData.position.z;
-  otherUserEl.innerHTML = `
+  otherUserEl.object3D.rotation.set( 
+    THREE.Math.degToRad(0),
+    THREE.Math.degToRad(180),
+    THREE.Math.degToRad(0),    
+  );
+   otherUserEl.innerHTML = `
   <a-entity position="0 -1 0" gltf-model="#model" scale="3 3 3"></a-entity>
             `;
   document.querySelector("a-scene").appendChild(otherUserEl);
 });
+
 
 socket.on("user disconnected", (disconnectedUser) => {
   document.getElementById(disconnectedUser).remove();
@@ -92,18 +94,24 @@ document.addEventListener("mousemove", () => {
     .getElementById("camera")
     .getAttribute("rotation");
 
-  console.log(cameraRelativeRotation)
   socket.emit("user rotation update", cameraRelativeRotation);
-})
+});
+
 
 socket.on("user rotation update", (userDataJSON) => {
   const userData = JSON.parse(userDataJSON);
   const userEl = document.getElementById(userData.id).querySelector('a-entity');
-  userEl.getAttribute("rotation").x = userData.rotation.x;
-  userEl.getAttribute("rotation").y = userData.rotation.y;
-  userEl.getAttribute("rotation").z = userData.rotation.z;
-  console.log(userEl.getAttribute("rotation"))
+  // Why not rotating using getAttribute? 
+  // Ans: Because it's less recommended in the aframe documentation
+  // https://aframe.io/docs/1.3.0/components/rotation.html#sidebar
+  userEl.object3D.rotation.set( 
+    THREE.Math.degToRad(0),
+    THREE.Math.degToRad(userData.rotation.y),
+    THREE.Math.degToRad(0),    
+  );
+  console.log("Log: ", userData.rotation, userEl.getAttribute('rotation'))
 });
+
 
 // @desc    required for serializing maps in JSON parse
 function reviver(key, value) {

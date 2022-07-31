@@ -10,6 +10,7 @@
     <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
 
     <!-- Components -->
+    <script src="/components/exit-tryon.js"></script>
   </head>
   <body>
     <a-scene
@@ -31,20 +32,20 @@
 
       <a-gltf-model
         id="room"
-        src="assets/trial_room/scene.gltf"
+        src="/assets/trial_room/scene.gltf"
       ></a-gltf-model>
       <a-gltf-model
         id="user"
         position="0 0 -7"
         scale="4 4 4"
-        src="assets/built_male_young_anatomy_free_download/scene.gltf"
+        src="/assets/built_male_young_anatomy_free_download/scene.gltf"
         animation="property: rotation; to: 0 360 0; dur: 5000; loop: true; easing: linear"
       ></a-gltf-model>
       <a-gltf-model
       id="user"
       position="0 -5 -7"
       scale="0.0054 0.0048 0.0059"
-      src="assets/tank_top/scene.gltf"
+      src="/assets/tank_top/scene.gltf"
       animation="property: rotation; to: 0 360 0; dur: 5000; loop: true; easing: linear"
 
     ></a-gltf-model>
@@ -53,7 +54,7 @@
         id="user"
         position="0 -5.7  -6.8"
         scale="0.2 0.2 0.25"
-        src="assets/underwear_cotton_cloth_simulation/scene.gltf"
+        src="/assets/underwear_cotton_cloth_simulation/scene.gltf"
         animation="property: rotation; to: 0 360 0; dur: 5000; loop: true; easing: linear"
       ></a-gltf-model>
 
@@ -66,11 +67,11 @@
           look-controls="reverseMouseDrag:true"
           position="0 1 0"
         >
+          <!-- Exit Button -->
+          <a-text value="EXIT" position="-0.06 0.54 -0.99" color="white" width="1.3"></a-text>
+          <a-box scale="0.2 0.1 0" position="0 0.55 -1" color="red" exit-tryon></a-box>
         </a-entity>
       </a-entity>
 
   </body>
 </html>
-
-
-<!-- animation="property: rotation; to: 0 360 0; dur: 5000; loop: true; easing: linear" -->
