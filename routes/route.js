@@ -25,6 +25,14 @@ router.get("/metaverse/try", ensureAuth, async (req, res) => {
   res.sendFile(path.join(__dirname + "/../public/try.html"));
 });
 
+router.get("/metaverse/trypants", ensureAuth, async (req, res) => {
+  res.sendFile(path.join(__dirname + "/../public/try_pants.html"));
+});
+
+router.get("/metaverse/tryshoes", ensureAuth, async (req, res) => {
+  res.sendFile(path.join(__dirname + "/../public/try_shoes.html"));
+});
+
 // @desc    Auth with Google
 // @route   GET /auth/google
 router.get(
@@ -52,5 +60,7 @@ router.get("/auth/logout", (req, res) => {
     res.redirect("/");
   });
 });
+
+
 
 module.exports = router;
