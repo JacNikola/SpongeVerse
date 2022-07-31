@@ -8,8 +8,7 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 // @desc Login Page
 // @route GET /
 router.get("/", ensureGuest, (req, res) => {
-  // res.sendFile(path.join(__dirname + '/../views/login.html'));
-  res.sendFile(path.join(__dirname + "/../public/index.html"));
+  res.sendFile(path.join(__dirname + '/../views/login.html'));
 });
 
 // @desc metaverse

@@ -39,6 +39,7 @@ socket.on("init", (metaDataJSON) => {
   });
 });
 
+
 socket.on("new user", (userDataJSON) => {
   const userData = JSON.parse(userDataJSON);
   const otherUserEl = document.createElement("a-entity");
@@ -56,6 +57,7 @@ socket.on("new user", (userDataJSON) => {
             `;
   document.querySelector("a-scene").appendChild(otherUserEl);
 });
+
 
 socket.on("user disconnected", (disconnectedUser) => {
   document.getElementById(disconnectedUser).remove();
@@ -95,6 +97,7 @@ document.addEventListener("mousemove", () => {
   socket.emit("user rotation update", cameraRelativeRotation);
 });
 
+
 socket.on("user rotation update", (userDataJSON) => {
   const userData = JSON.parse(userDataJSON);
   const userEl = document.getElementById(userData.id).querySelector('a-entity');
@@ -108,6 +111,7 @@ socket.on("user rotation update", (userDataJSON) => {
   );
   console.log("Log: ", userData.rotation, userEl.getAttribute('rotation'))
 });
+
 
 // @desc    required for serializing maps in JSON parse
 function reviver(key, value) {
