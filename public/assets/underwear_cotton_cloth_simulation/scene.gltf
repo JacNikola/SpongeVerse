@@ -1,0 +1,381 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 5994,
+      "max": [
+        1061.037841796875,
+        130.57472229003906,
+        1096.7257080078125
+      ],
+      "min": [
+        695.96875,
+        -126.59541320800781,
+        806.0404663085938
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 71928,
+      "componentType": 5126,
+      "count": 5994,
+      "max": [
+        0.9999911785125732,
+        0.9998767971992493,
+        0.9967077374458313
+      ],
+      "min": [
+        -0.999894917011261,
+        -0.9999418258666992,
+        -0.9998314380645752
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 5994,
+      "max": [
+        14.032630920410156,
+        9.816749572753906
+      ],
+      "min": [
+        -12.940536499023438,
+        -12.543651580810547
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 27282,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 143856,
+      "componentType": 5126,
+      "count": 1419,
+      "max": [
+        -42.88734436035156,
+        105.51216888427734,
+        12.527990341186523
+      ],
+      "min": [
+        -75.50855255126953,
+        98.53303527832031,
+        -11.889788627624512
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 160884,
+      "componentType": 5126,
+      "count": 1419,
+      "max": [
+        0.9971280694007874,
+        0.4606281816959381,
+        0.9869603514671326
+      ],
+      "min": [
+        -0.9971195459365845,
+        -0.5793722867965698,
+        -0.974301278591156
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 47952,
+      "componentType": 5126,
+      "count": 1419,
+      "max": [
+        0.850350022315979,
+        0.9753599762916565
+      ],
+      "min": [
+        0.14963999390602112,
+        0.45680999755859375
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 109128,
+      "componentType": 5125,
+      "count": 6048,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "victorberdugo1 (https://sketchfab.com/victorberdugo1)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/underwear-cotton-cloth-simulation-be81a365791d462db0de43c7e40ad0d8",
+      "title": "Underwear Cotton Cloth Simulation"
+    },
+    "generator": "Sketchfab-13.12.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 133320,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 59304,
+      "byteOffset": 133320,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 177912,
+      "byteOffset": 192624,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 370536,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/Mens_Boxers_Arabian_Fashion_Reduced_Knit_Cotton_Rayon_Jersey_FRONT_2273269_baseColor.png"
+    },
+    {
+      "uri": "textures/underwear_baseColor.jpeg"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Mens_Boxers_Arabian_Fashion_Reduced_Knit_Cotton_Rayon_Jersey_FRONT_2273269",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.6
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "underwear",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.6
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Line002_Mens Boxers Arabian Fashion_Reduced_Knit_Cotton_Rayon_Jersey_FRONT_2273269_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Underwear_lvl02_underwear_0_underwear_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.005139875225723012,
+        0.9999867677688599,
+        0.0,
+        0.0,
+        -0.9999867677688599,
+        -0.005139875225723012,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.02539999969303608,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.02539999969303608,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.02539999969303608,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "f8fe0835a407453289e95f790262b2a8.fbx"
+    },
+    {
+      "children": [
+        3,
+        5
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -878.1517944335938,
+        -5.059359073638916,
+        0.0,
+        1.0
+      ],
+      "name": "Line002"
+    },
+    {
+      "mesh": 0,
+      "name": "Line002_Mens Boxers Arabian Fashion_Reduced_Knit_Cotton_Rayon_Jersey_FRONT_2273269_0"
+    },
+    {
+      "children": [
+        6
+      ],
+      "matrix": [
+        9.148651123046875,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.4272283127445937e-06,
+        8.760264396667365,
+        0.0,
+        0.0,
+        -9.656143188476435,
+        -1.5731855029115647e-06,
+        0.0,
+        -0.26287841796875,
+        -11.229741096496582,
+        1100.5657958984375,
+        1.0
+      ],
+      "name": "Underwear_lvl02_underwear_0"
+    },
+    {
+      "children": [
+        7
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        59.1979446411133,
+        -102.022598266602,
+        -0.319100856781006,
+        1.0
+      ],
+      "name": "Object_6"
+    },
+    {
+      "mesh": 1,
+      "name": "Underwear_lvl02_underwear_0_underwear_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Tank Top
+* source:	https://sketchfab.com/3d-models/tank-top-d6b2561de39f423f9c7a2e7944485beb
+* author:	Shift4cube (https://sketchfab.com/Shift4cube)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Tank Top" (https://sketchfab.com/3d-models/tank-top-d6b2561de39f423f9c7a2e7944485beb) by Shift4cube (https://sketchfab.com/Shift4cube) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
