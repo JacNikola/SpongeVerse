@@ -9,7 +9,7 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v4.2.0/dist/aframe-extras.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v4.2.0/dist/aframe-extras.min.js"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r99/three.min.js"></script> -->
     
     <!-- Components -->
@@ -53,9 +53,17 @@
         <!-- Camera + User -->
         <a-entity id="user"w>
             <a-entity id="camera" camera wasd-controls look-controls="reverseMouseDrag:true" position="0 3.5 0">
-            <a-cylinder position="0 1 0" color="green" height="0.75" radius="0.75" shadow="receive: true; cast: true;"></a-cylinder>
-            <a-cylinder position="0 1.875 0" color="blue" height="1" radius="0.75" shadow="receive: true; cast: true;"></a-cylinder>
-            <a-sphere position="0 3 0" color="red" radius="0.5" shadow="receive: true; cast: true;"></a-sphere>
+                <a-cylinder position="0 1 0" color="green" height="0.75" radius="0.75" shadow="receive: true; cast: true;"></a-cylinder>
+                <a-cylinder position="0 1.875 0" color="blue" height="1" radius="0.75" shadow="receive: true; cast: true;"></a-cylinder>
+                <a-sphere position="0 3 0" color="red" radius="0.5" shadow="receive: true; cast: true;"></a-sphere>
+                
+                <!-- Checkout -->
+                <a-text value="Check Cart" position="0.88 0.69 -0.99" color="white" width="1"></a-text>
+                <a-box scale="0.3 0.1 0" position="1 0.7 -1" color="yellow"></a-box>
+                
+                <!-- Logout -->
+                <a-text value="Logout" position="0.92 0.54 -0.99" color="white" width="1"></a-text>
+                <a-box scale="0.2 0.1 0" position="1 0.55 -1" color="red" logout></a-box>
             </a-entity>
         </a-entity>
 
