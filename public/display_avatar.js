@@ -32,7 +32,7 @@ socket.on('init', (metaDataJSON) => {
                 THREE.Math.degToRad(0)
             )
             otherUserEl.innerHTML = `
-              <a-entity position="0 -1 0" fbx-model="#model" scale="3 3 3"></a-entity>
+              <a-entity position="0 -1 0" gltf-model="#model" scale="3 3 3"></a-entity>
             `
             document.querySelector('a-scene').appendChild(otherUserEl)
         }
@@ -52,7 +52,7 @@ socket.on('new user', (userDataJSON) => {
         THREE.Math.degToRad(0)
     )
     otherUserEl.innerHTML = `
-      <a-entity position="0 -1 0" fbx-model="#model" scale="3 3 3"></a-entity>
+      <a-entity position="0 -1 0" gltf-model="#model" scale="3 3 3"></a-entity>
             `
     document.querySelector('a-scene').appendChild(otherUserEl)
 })

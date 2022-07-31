@@ -29,7 +29,7 @@
       <a-assets>
         <a-asset-item
           id="model"
-          src="assets/Walking.fbx"
+          src="assets/rigged_human_character_free/scene.gltf"
         ></a-asset-item>
       </a-assets>
 
@@ -43,7 +43,7 @@
       ></a-entity>
 
       <!-- Background Music -->
-      <a-entity sound="src: url(assets/music.mp3); autoplay: true;"></a-entity>
+      <a-entity sound="src: url(assets/music.mp3); autoplay: true; loop: true;"></a-entity>
 
       <!-- Camera + User -->
       <a-entity id="user">
@@ -176,8 +176,8 @@
       <a-text value="Buy" position="-8.5 5.1 -0.01" rotation="0 180 0" color="black" width="12"></a-text>
       <a-box position="-9 5 0" rotation="0 0 0" width="1.5" height="1" depth="0" color="white"></a-box>
       
-      <a-text value="Try On" position="-7.7 5.1 0.01" color="black" width="10"></a-text>
-      <a-text value="Try On" position="-6.3 5.1 -0.01" rotation="0 180 0" color="black" width="10"></a-text>
+      <a-text value="Try On" position="-7.7 5.1 0.01" color="black" width="10" tryon></a-text>
+      <a-text value="Try On" position="-6.3 5.1 -0.01" rotation="0 180 0" color="black" width="10" tryon></a-text>
       <a-box position="-7 5 0" rotation="0 0 0" width="1.5" height="1" depth="0" color="white" tryon></a-box>
 
       <!-- Item 2 -->
@@ -196,12 +196,11 @@
       <a-text value="Buy" position="9.5 3.1 -0.01" rotation="0 180 0" color="black" width="12"></a-text>
       <a-box position="9 3 0" rotation="0 0 0" width="1.5" height="1" depth="0" color="white"></a-box>
       
-      <a-text value="Try On" position="6.3 3.1 0.01" color="black" width="10"></a-text>
-      <a-text value="Try On" position="7.7 3.1 -0.01" rotation="0 180 0" color="black" width="10"></a-text>
+      <a-text value="Try On" position="6.3 3.1 0.01" color="black" width="10" tryshoes></a-text>
+      <a-text value="Try On" position="7.7 3.1 -0.01" rotation="0 180 0" color="black" width="10" tryshoes></a-text>
       <a-box position="7 3 0" rotation="0 0 0" width="1.5" height="1" depth="0" color="white" tryshoes></a-box>
 
-      <!-- Non Wearable Item to Buy -->
-      <!-- Item 1 -->
+      <!-- Item 3 -->
       <a-gltf-model
         id="pants"
         position="0 0 9"
@@ -217,11 +216,12 @@
       <a-text value="Buy" position="-0.5 5.5 8.99" rotation="0 180 0" color="black" width="12"></a-text>
       <a-box position="-1 5.4 9" rotation="0 0 0" width="1.5" height="1" depth="0" color="white"></a-box>
 
-      <a-text value="Try On" position="0.5 5.5 9.01" color="black" width="12"></a-text>
-      <a-text value="Try On" position="2 5.5 8.99" rotation="0 180 0" color="black" width="12"></a-text>
+      <a-text value="Try On" position="0.5 5.5 9.01" color="black" width="12" trypants></a-text>
+      <a-text value="Try On" position="2 5.5 8.99" rotation="0 180 0" color="black" width="12" trypants></a-text>
       <a-box position="1.2 5.4 9" rotation="0 0 0" width="2" height="1" depth="0" color="white" trypants></a-box>
 
-      <!-- Item 2 -->
+      <!-- Non Wearable Item to Buy -->
+      <!-- Item 1 -->
       <a-gltf-model
         id="pants"
         position="0 5 -8"
