@@ -18,6 +18,12 @@ router.get("/metaverse", ensureAuth, async (req, res) => {
   res.sendFile(path.join(__dirname + "/../public/index.html"));
 });
 
+// @desc virtual try on
+// @route GET /metaverse/try
+router.get("/metaverse/try", ensureAuth, async (req, res) => {
+  res.sendFile(path.join(__dirname + "/../public/try.html"));
+});
+
 // @desc    Auth with Google
 // @route   GET /auth/google
 router.get(
