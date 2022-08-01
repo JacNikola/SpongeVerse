@@ -6,7 +6,12 @@ interact with each other, buy products and try apparels on their avatar. <br>
 **Video Demo**: <br>
 https://drive.google.com/file/d/1p1k4T6bO5JuurpuM1EU6kry_6_JhQcQm/view?usp=sharing
 
-**Tech Stack**: <br>
+**Team Members**:
+1. Rishu Kumar
+2. Abhinab Saha
+3. Debadipto Biswas
+
+**Tech Stack**: 
 * HTML
 * A-Frame 
 * NodeJS
@@ -14,7 +19,7 @@ https://drive.google.com/file/d/1p1k4T6bO5JuurpuM1EU6kry_6_JhQcQm/view?usp=shari
 * Passport
 * Socket.IO 
 
-**Features**:
+**Features**: 
 * 3D web world
 * Login/Logout using google account
 * Multiple users can join
