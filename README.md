@@ -6,6 +6,9 @@ interact with each other, buy products and try apparels on their avatar. <br>
 **Video Demo**: <br>
 https://drive.google.com/file/d/1p1k4T6bO5JuurpuM1EU6kry_6_JhQcQm/view?usp=sharing
 
+** PPT**: <br>
+https://docs.google.com/presentation/d/1sP7J5Q17waF2XQCtVJenmOeiV9TOdyg7/edit?usp=sharing&ouid=115332866248745626295&rtpof=true&sd=true
+
 **Team Members**:
 1. Rishu Kumar
 2. Abhinab Saha
