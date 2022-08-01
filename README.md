@@ -30,10 +30,13 @@ https://docs.google.com/presentation/d/1sP7J5Q17waF2XQCtVJenmOeiV9TOdyg7/edit?us
 * Buy Products
 
 ### Login with google account
-<img src="/images/sign-in.png" align="center" width="600px" height="350px"> </img>
+<img src="/images/sign-in.png" width="800" height="450"> </img>
 
 ### Welcome to SpongeVerse
-<img src="/images/spongeverse.png" align="center" width="600px" height="350px"> </img>
+![try on img](/images/spongeverse.png)
 
 ### Try On
-<img src="/images/tryon-shirt.png" align="center" width="600px" height="350px"> </img>
+![try on img](/images/tryon-shirt.png)
+
+### Multiple Users
+<img src="/images/avatar.png" width="500" height="600"> </img>
