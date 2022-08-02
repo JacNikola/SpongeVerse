@@ -4,7 +4,9 @@ SpongeVerse is a web based immersive 3D world where multiple users can join conc
 interact with each other, buy products and try apparels on their avatar. <br>
 
 **Deployed on Heroku** <br>
-https://spongeverse.herokuapp.com/
+https://spongeverse.herokuapp.com/ <br>
+
+**After logging in wait for a minute for everything to load properly.**
 
 **Video Demo**: <br>
 https://drive.google.com/file/d/1p1k4T6bO5JuurpuM1EU6kry_6_JhQcQm/view?usp=sharing
