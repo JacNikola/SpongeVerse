@@ -44,7 +44,7 @@ router.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/" }),
   (req, res) => {
-    res.redirect("/metaverse");
+    res.redirect("https://spongeverse.herokuapp.com/metaverse");
   }
 );
 
