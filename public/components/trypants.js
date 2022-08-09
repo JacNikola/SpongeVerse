@@ -2,7 +2,7 @@ AFRAME.registerComponent('trypants', {
     init: function () {
         let el = this.el
         this.tryon = function () {
-            location.href = 'http://spongeverse.herokuapp.com/metaverse/trypants'
+            location.href = 'https://spongeverse.herokuapp.com/metaverse/trypants'
         }
         this.el.addEventListener('click', this.tryon)
     },
