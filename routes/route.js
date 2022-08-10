@@ -44,6 +44,8 @@ router.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/" }),
   (req, res) => {
+    // had to use complete uri instead of just /metaverse 
+    // because callback uri uses http but redirect uri should have https
     res.redirect("https://spongeverse.herokuapp.com/metaverse");
   }
 );
